@@ -9,9 +9,9 @@ const config = {
     },
     type: "default"
   },
-  server: "asaworkspaceqlgyaf7.sql.azuresynapse.net", // update me
+  server: "asaworkspaceqlgyaf7-ondemand.sql.azuresynapse.net", // update me
   options: {
-    database: "SQLPool01", //update me
+    database: "Profiles", //update me
     encrypt: true,
     trustServerCertificate: false
   }
@@ -64,15 +64,13 @@ function queryDatabase() {
 
   // Read all rows from table
   const request = new Request(
-    `SELECT TOP (5) [Region]
-,[Country]
-,[ProductCategory]
-,[CampaignName]
-,[Revenue]
-,[RevenueTarget]
-,[City]
-,[State]
- FROM [wwi].[CampaignAnalytics]`,
+    `SELECT TOP (10) [userId]
+,[cartId]
+,[preferredProducts]
+,[productReviews]
+,[productId]
+,[reviewText]
+ FROM [dbo].[UserProfileHTAP]`,
     (err, rowCount) => {
       if (err) {
         console.error(err.message);
